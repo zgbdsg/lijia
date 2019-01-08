@@ -1,0 +1,19 @@
+$def with(video)
+$:render.header_read()
+<p hidden="" id="vid">$video.id</p>
+<p hidden="" id="type">$video.type</p>
+<p hidden="" id="name">$video.name</p>
+<p hidden="" id="path">$video.path</p>
+
+<div id="faceBoxs" class="main">
+    <video id="faceMedia" src="$video.path"></video>
+    <canvas id="faceCanvas" width="989" height="594"></canvas>
+
+    <span id="playImgBtn" style="display: block; left: 45%; top: 32.6599%"></span>
+    <div id="rate-bar">
+        <input type="range" min="0" max="100" step="0.1" value="100">
+        <!-- <p id="score">100</p> -->
+    </div>
+</div>
+
+$:render.foot()

@@ -1,0 +1,76 @@
+$def with(videos_common, videos_grade, videos_question, videos_viewonly)
+
+$:render.header_read()
+
+<div class="main">
+    <p>video common</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_common:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id/read">$v.name</a>
+                &nbsp;
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+
+    <p>video grade everywhere</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_grade:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id/read">$v.name</a>
+                &nbsp;
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+
+    <p>video with question</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_question:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id/read">$v.name</a>
+                &nbsp;
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+
+    <p>video viewonly</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_viewonly:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id/read">$v.name</a>
+                &nbsp;
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+</div>
+
+
+$:render.foot()

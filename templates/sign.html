@@ -1,0 +1,182 @@
+$def with(video)
+$:render.header()
+
+<p hidden="" id="vid">$video.id</p>
+<p hidden="" id="type">$video.type</p>
+<p hidden="" id="name">$video.name</p>
+<p hidden="" id="path">$video.path</p>
+
+<div id="faceBoxs" class="main">
+    <input id = "videoId" style="display: none" value="$video.type"></input>
+    <video id="faceMedia" src="$video.path"></video>
+    <canvas id="faceCanvas" width="989" height="594"></canvas>
+    <div id="controlBox" style="display: none;">
+        <div id="controlBar">
+            <div id="progBtnBar"><span id="PreLoad"></span><span id="pregTimeBar" style="width: 12.4088%;"></span></div>
+            <span id="playBtn" class="icon-ion-ios-play"></span><span id="showTime"><b id="currTime">00:00:04</b> / <b
+                id="totalTime">00:00:36</b></span><span
+                id="FullScreen" class="icon-ion-arrow-expand Btn"></span>
+            <div id="volumeBox">
+                <div id="volumeBar">
+                    <div id="volumeMask"><span id="volume"><span id="volume2"></span></span>
+                    </div>
+                </div>
+                <span id="OpenVolBtn" class="icon-ion-android-volume-up Btn"></span></div>
+        </div>
+    </div>
+    <!--<span id="addBtn" style="display: block; left: 22.6997%; top: 32.6599%;"></span>-->
+
+    <span id="playImgBtn" style="display: block; left: 45%; top: 32.6599%"></span>
+    <div id="mask" style="display: none;"></div>
+    <div id="eJectBox" style="">
+        <div class="eJectCloseBox"><span class="eJectClose">close</span></div>
+        <!-- <img class="eJectImg" src="/static/images/bg_img.png"> -->
+        <div class="eJectCenter"><span class="eJectTitle"></span>
+            <p class="eJectContent ps-container">
+            <div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px;">
+                <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 150px; display: none;">
+                <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+            </div>
+            </p><a href="" class="eJectJump" target="_blank">more</a></div>
+    </div>
+    $if video.type==3:
+        <div id="questionBox" style="display: none;"><span class="close">close</span><span class="existing">source</span><span
+                class="handadd selected">add</span>
+            <div id="questionshowBox">
+                <table class="playTable" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                    <tr style="height:40px;">
+                        <td><i class="big">•</i> title：</td>
+                        <td style="position:relative">
+                            <input class="borderStyle title" type="text" maxlength="150" placeholder="title content less then 150 words(not null)">
+                            <ul class="productType"><span
+                                    style="height: 12px;line-height: 10px;position: absolute;text-align: right;top: 10px;width: 16px;">∨</span>
+                                <li data-type="1" class="chekcLi">music</li>
+                                <li data-type="2">person</li>
+                                <li data-type="3">brand</li>
+                                <li data-type="4">prop</li>
+                                <li data-type="5">topic</li>
+                                <li data-type="6">action</li>
+                            </ul>
+                            <span class="source">source</span></td>
+                    </tr>
+                    <!-- <tr style="height:40px;">
+                        <td><i class="big">•</i> link：</td>
+                        <td>
+                            <input class="borderStyle url" type="url" placeholder="add httplink">
+                        </td>
+                    </tr> -->
+                    <tr style="height:40px;">
+                        <td>length：</td>
+                        <td>
+                            <div class="inputBox">
+                                <input class="borderStyle length" type="text" maxlength="1" value="3"><span class="elem">s（1-9s）</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td>desc：</td>
+                        <td>
+                            <textarea class="borderStyle desc" maxlength="500" placeholder="description less then 500 words"></textarea>
+                        </td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td>question：</td>
+                        <td>
+                            <div class="inputBox">
+                                <a class="btn questionAdd">+</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height:40px;">
+                            <td></td>
+                            <td>
+                                    <div id="questionTypeGroup" class="btn-group" data-toggle="buttons" style="display:none;">
+                                            <label class="btn btn-secondary">
+                                              <input type="radio" name="questype" id="option1" value="1">Rate
+                                            </label>
+                                            <label class="btn btn-secondary">
+                                              <input type="radio" name="questype" id="option2" value="2">Text
+                                            </label>
+                                            <label class="btn btn-secondary">
+                                              <input type="radio" name="questype" id="option3" value="3">Both
+                                            </label>
+                                    </div>
+                            </td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td></td>
+                        <td>
+                            <div class="inputBox">
+                                <input type="text" id="questionDetail" class="borderStyle" style="display: none" placeholder="input the question"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="2" style="text-align:center;">
+                            <button id="submit2">OK</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    $else:
+        <div id="panelBox" style="display: none;"><span class="close">close</span><span class="existing">source</span><span
+                class="handadd selected">add</span>
+            <div id="showBox">
+                <table class="playTable" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                    <tr style="height:40px;">
+                        <td><i class="big">•</i> title：</td>
+                        <td style="position:relative">
+                            <input class="borderStyle title" type="text" maxlength="150" placeholder="title content less then 150 words(not null)">
+                            <ul class="productType"><span
+                                    style="height: 12px;line-height: 10px;position: absolute;text-align: right;top: 10px;width: 16px;">∨</span>
+                                <li data-type="1" class="chekcLi">music</li>
+                                <li data-type="2">person</li>
+                                <li data-type="3">brand</li>
+                                <li data-type="4">prop</li>
+                                <li data-type="5">topic</li>
+                                <li data-type="6">action</li>
+                            </ul>
+                            <span class="source">source</span></td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td><i class="big">•</i> link：</td>
+                        <td>
+                            <input class="borderStyle url" type="url" placeholder="add httplink">
+                        </td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td>length：</td>
+                        <td>
+                            <div class="inputBox">
+                                <input class="borderStyle length" type="text" maxlength="1" value="3"><span class="elem">s（1-9s）</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height:90px;">
+                        <td colspan="2" style="text-align: center; width: 100%;">
+                            <label for="imgfile" style="display: inline-block"><img class="borderStyle file"
+                                                                                    src="/static/images/img2.jpg" alt="">
+                                <input type="file" id="imgfile">
+                            </label>
+                            <textarea class="borderStyle desc" maxlength="500" placeholder="description less then 500 words"></textarea>
+                        </td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="2" style="text-align:center;">
+                            <button id="submit">OK</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</div>
+
+$:render.foot()

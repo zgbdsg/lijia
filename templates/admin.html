@@ -1,0 +1,98 @@
+$def with(videos_common, videos_grade, videos_question, videos_viewonly)
+
+$:render.header()
+
+<div class="main">
+    <p>video common</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_common:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id">$v.name</a>
+                &nbsp;
+                <a href="/todo/$v.id/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+
+    <p>video grade everywhere</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_grade:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id">$v.name</a>
+                &nbsp;
+                <a href="/todo/$v.id/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+
+    <p>video with question</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_question:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id">$v.name</a>
+                &nbsp;
+                <a href="/todo/$v.id/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+
+    <p>video viewonly</p>
+    <div class="box todos">
+
+        <ul>
+            $for v in videos_viewonly:
+            <li>
+                <i class="icon-question-sign"></i>
+                &nbsp;
+                <a href="/sign/$v.id">$v.name</a>
+                &nbsp;
+                <a href="/todo/$v.id/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+            </li>
+        </ul>
+
+    </div>
+    <hr/>
+    <hr/>
+
+    <p>add video</p>
+    <div class="box">
+        <form action="/todo/new" method="post" name="form" enctype="multipart/form-data">
+
+            <p>type</p>
+            <input type="radio" name="type" value='1' checked=checked>1
+            <input type="radio" name="type" value='2'>2
+            <input type="radio" name="type" value='3'>3
+            <input type="radio" name="type" value='4'>4
+            <hr/>
+
+            <input type="file" name="fileUpload"/>
+            <textarea name="title" placeholder="add title for the video"></textarea>
+            <p style="text-align:right;margin-right:12px"><input type="submit" class="submit btn btn-primary"
+                                                                 value="Upload"/></p>
+        </form>
+    </div>
+
+</div>
+
+$:render.foot()
