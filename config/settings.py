@@ -2,8 +2,8 @@
 # coding: utf-8
 import web
 
-#db = web.database(host='127.0.0.1', dbn='mysql', db='todo', user='root', pw='Admin@123')
-db = web.database(host='127.0.0.1', dbn='mysql', db='todo', user='root', pw='')
+db = web.database(host='127.0.0.1', dbn='mysql', db='todo', user='root', pw='Admin@123')
+#db = web.database(host='127.0.0.1', dbn='mysql', db='todo', user='root', pw='')
 
 render = web.template.render('templates/', cache=False)
 
