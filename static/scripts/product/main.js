@@ -172,7 +172,7 @@ var plugin = function () {
         $(".videoId").val(id);
         $(".videoType").val(type);
 
-        if (type == "2") {
+        if (type == "2"||type=="4") {
             console.log("rate-bar block");
             $('#rate-bar').css("display", "block")
         }
@@ -389,7 +389,7 @@ var plugin = function () {
                 play.getVideo();
             }
             vtype = videoT[videoCount].type;
-            if (vtype == "2") {
+            if (vtype == "2"||vtype=="4") {
                 $('#rate-bar').css("display", "block");
             } else {
                 $('#rate-bar').css("display", "none");
@@ -1113,6 +1113,7 @@ var plugin = function () {
                         
                         if(ques&&ques.type!=2)
                             $('.rangeQ').val(5).change();
+                            
 
                         var _desc = data['desc'] == "" ? '您没有填写详情介绍!' : data['desc'];
 
@@ -1122,7 +1123,7 @@ var plugin = function () {
 
                         //$('.eJectImg').attr('src', _img);
 
-                        if (!!data['url']) {
+                        if (!!data['url']&&data['url']!="http://") {
                             $('.eJectJump').attr('href', data['url'])
                         }
                         else {
@@ -1141,6 +1142,7 @@ var plugin = function () {
                         $('.rangeslider').css({ display: "block" });
                         $(".rangeText").css({ display: "block" });
                         $(".submitAns").css({ display: "none" });
+                        
                         //根据问题类型显示回答方式 1:评分，2：文字，3：全部
                         showAnswerByType(ques.type);
 
@@ -1757,7 +1759,10 @@ function showAnswerByType(type){
         $(".rangeslider").show();
     }
 }
-
+function setRateBarValue(value){
+    var _h='<span style="display: block;line-height: 42px;text-align: center;">'+value+'</span>';
+    $("#rate-bar .rangeslider__handle").html(_h);
+}
 $(function () {
     // $("#mask").fadeIn(200);
     $(".rightConfirm").on("click", function () {
@@ -1775,11 +1780,13 @@ $(function () {
         // Callback function
         onInit: function () {
             console.log('init');
+            setRateBarValue(50);
         },
 
         onSlide: function (position, value) {
             console.log('onSlide');
             console.log('position: ' + position, 'value: ' + value);
+            setRateBarValue(value);
         },
 
         // Callback function
@@ -1787,6 +1794,7 @@ $(function () {
             console.log('onSlideEnd');
             console.log('position: ' + position, 'value: ' + value);
             var id = $("input.videoId").val();
+            setRateBarValue(value);
             $.post('/sign/' + id + '/score', { score: value }, function (data) {
             }, "json");
         }
