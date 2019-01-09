@@ -1089,6 +1089,7 @@ var plugin = function () {
                 if (vtype == "3") {
                     $(".eJectRight>.type3").css({ display: "block" });
                     $(".eJectRight>.typecommon").css({ display: "none" });
+                    $(".eJectCloseBox>.eJectClose").css({ display: "none" });
 
                 }
 
@@ -1143,7 +1144,8 @@ var plugin = function () {
                         $(".rangeText").css({ display: "block" });
                         $(".submitAns").css({ display: "none" });
                         
-                        //根据问题类型显示回答方式 1:评分，2：文字，3：全部
+                        //根据问题类型显示回答方式 1:评分，2：文字，3：全部,不判断类型会影响2和4的打分条
+                        if(vtype=="3")
                         showAnswerByType(ques.type);
 
                     } else {
@@ -1236,9 +1238,9 @@ var plugin = function () {
             console.log(play.fn.getAns());
             $(".close").click();
             $(".submitAns").css({ display: "none" });
-            $(".answerText").css({ display: "inline-block" });
-            $('.rangeslider').css({ display: "block" });
-            $(".rangeText").css({ display: "block" });
+            // $(".answerText").css({ display: "inline-block" });
+            // $('.rangeslider').css({ display: "block" });
+            // $(".rangeText").css({ display: "block" });
 
             var id = videoT[videoCount].id;
             var btnId = $(".adsTitle").attr('data-id');
