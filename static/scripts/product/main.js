@@ -391,6 +391,8 @@ var plugin = function () {
             vtype = videoT[videoCount].type;
             if (vtype == "2"||vtype=="4") {
                 $('#rate-bar').css("display", "block");
+                $('#rate-bar .rangeslider').css("display", "block");
+                setRateBarValue(50);
             } else {
                 $('#rate-bar').css("display", "none");
             }
@@ -1089,8 +1091,10 @@ var plugin = function () {
                 if (vtype == "3") {
                     $(".eJectRight>.type3").css({ display: "block" });
                     $(".eJectRight>.typecommon").css({ display: "none" });
-                    $(".eJectCloseBox>.eJectClose").css({ display: "none" });
-
+                    $(".eJectCloseBox").css({ display: "none" });
+                }
+                else{
+                    $(".eJectCloseBox").css({ display: "block" });
                 }
 
                 $(".clickBid").val(btnId);
@@ -1112,8 +1116,10 @@ var plugin = function () {
 
                         $('.question').attr({ "data-index": 1 });
                         
-                        if(ques&&ques.type!=2)
-                            $('.rangeQ').val(5).change();
+                        // if(ques.type&&ques.type!="2"){
+                        //     $('.rangeQ').val(5).change();
+                        // }
+                        $('.rangeQ').val(5).change();
                             
 
                         var _desc = data['desc'] == "" ? '您没有填写详情介绍!' : data['desc'];
@@ -1145,9 +1151,9 @@ var plugin = function () {
                         $(".submitAns").css({ display: "none" });
                         
                         //根据问题类型显示回答方式 1:评分，2：文字，3：全部,不判断类型会影响2和4的打分条
-                        if(vtype=="3")
-                        showAnswerByType(ques.type);
-
+                        if(vtype=="3"){
+                            showAnswerByType(ques.type);
+                        }
                     } else {
 
                         return false;
@@ -1184,10 +1190,10 @@ var plugin = function () {
             }
             if (play.answers[index]) {
                 $(".answerText").val(play.answers[index].ans);
-                if(ques.type&&ques.type!=2)
+                if(ques.type&&ques.type!="2")
                     $('.rangeQ').val(play.answers[index].score).change();
             } else {
-                if(ques.type&&ques.type!=2)
+                if(ques.type&&ques.type!="2")
                     $('.rangeQ').val(5).change();
                 $(".answerText").val("");
             }
@@ -1218,11 +1224,11 @@ var plugin = function () {
             }
             if (play.answers[index]) {
                 $(".answerText").val(play.answers[index].ans);
-                if(ques.type&&ques.type!=2)
+                if(ques.type&&ques.type!="2")
                     $('.rangeQ').val(play.answers[index].score).change();
             } else {
                 $(".answerText").val("");
-                if(ques.type&&ques.type!=2)
+                if(ques.type&&ques.type!="2")
                     $('.rangeQ').val(5).change();
             }
         });
@@ -1257,13 +1263,17 @@ var plugin = function () {
             onSlide: function (position, value) {
                 console.log('onSlide');
                 console.log('position: ' + position, 'value: ' + value);
+                $(".rangeText").text(value);
+                
+            },
+            onSlideEnd: function (position, value) {
                 var index = parseInt($('.question').attr('data-index'));
                 $(".rangeText").text(value);
                 play.fn.updateAns(index, null, value);
                 if (play.fn.getAnsLength() == play.question.length) {
                     $(".submitAns").click();
                 }
-            },
+            }
         });
         $('.eJectClose').click(function () {
 
@@ -1734,7 +1744,7 @@ var plugin = function () {
         $("#appendStr").remove();
         // var _html = '<canvas id="faceCanvas"></canvas><div id="controlBox"><div id="controlBar"><div id="progBtnBar"><span id="PreLoad"></span><span id="pregTimeBar"></span></div><span id="playBtn" class="icon-ion-ios-play Btn"></span><span id="showTime"><b id="currTime">00:00:00</b> / <b id="totalTime">00:00:00</b></span><img id="faceLogo" class="Btn" src="/static/images/logo.png"></img><span id="FullScreen" class="icon-ion-arrow-expand Btn"></span><div id="volumeBox"><div id="volumeBar"><div id="volumeMask"><span id="volume"><span id="volume2"></span></span></div></div><span id="OpenVolBtn" class="icon-ion-android-volume-up Btn"></span></div></div></div><span id="addBtn"></span><div id="mask"></div><div id="eJectBox"><div class="eJectCloseBox"><span class="eJectClose">close</span></div><img class="eJectImg" src="/static/images/bg_img.png" /><div class="eJectRight"><span class="eJectTitle"></span><p class="eJectContent"></p><a href="" class="eJectJump" target="_blank">more</a></div></div><div id="panelBox"><span class="close">close</span><span class="existing">source</span><span class="handadd">手动添加</span><div id="showBox"></div></div>';
         // var _html = '<div id="controlBox"><div id="controlBar"><div id="progBtnBar"><span id="PreLoad"></span><span id="pregTimeBar"></span></div><span id="playBtn" class="icon-ion-ios-play Btn"></span><span id="showTime"><b id="currTime">00:00:00</b> / <b id="totalTime">00:00:00</b></span><img id="faceLogo" class="Btn" src="/static/images/logo.png"></img><span id="FullScreen" class="icon-ion-arrow-expand Btn"></span><div id="volumeBox"><div id="volumeBar"><div id="volumeMask"><span id="volume"><span id="volume2"></span></span></div></div><span id="OpenVolBtn" class="icon-ion-android-volume-up Btn"></span></div></div></div><span id="addBtn"></span><div id="mask"></div><div id="eJectBox"><div class="eJectCloseBox"><span class="eJectClose">close</span></div><img class="eJectImg" src="/static/images/bg_img.png" /><div class="eJectRight"><span class="eJectTitle"></span><p class="eJectContent"></p><a href="" class="eJectJump" target="_blank">more</a></div></div><div id="panelBox"><span class="close">close</span><span class="existing">source</span><span class="handadd">手动添加</span><div id="showBox"></div></div>';
-        var _html = '<div id="appendStr"><div id="controlBox"><div id="controlBar"><div id="progBtnBar"><span id="PreLoad"></span><span id="pregTimeBar"></span></div><span id="playBtn" class="icon-ion-ios-play Btn"></span><span id="showTime"><b id="currTime">00:00:00</b> / <b id="totalTime">00:00:00</b></span><span id="FullScreen" class="icon-ion-arrow-expand Btn"></span><div id="volumeBox"><div id="volumeBar"><div id="volumeMask"><span id="volume"><span id="volume2"></span></span></div></div><span id="OpenVolBtn" class="icon-ion-android-volume-up Btn"></span></div></div></div><span id="addBtn"></span><div id="mask"></div><div id="eJectBox"><div class="eJectCloseBox"><span class="eJectClose">close</span></div><img class="eJectImg" src="/static/images/bg_img.png" /><div class="eJectRight"><div class="type3"><span class="eJectTitle" style="text-align: center"></span><a class="btn preQues" style="float: left">&lt;</a><a class="btn nextQues" style="float: right">&gt;</a><p class="eJectContent ContentQ"><p class="question"></p><ul><li><a class="btn submitAns" style="display: none;">submit</a><div><textarea style="width: 95%;height: 60px;" placeholder="input or slide the slider bar" class="answerText"></textarea></div><div><span style="color:white;margin-bottom: 10px;" class="rangeText"></span><input type="range" class="rangeQ" min="0" max="10" step="1" value="5"></div></li></ul></p><a href="" class="eJectJump" target="_blank">more</a></div> <div class="typecommon"><span class="eJectTitle"></span><p class="eJectContent Content"></p><a href="" class="eJectJump" target="_blank">more</a></div></div> <div id="panelBox"><span class="close">close</span></div></div>';
+        var _html = '<div id="appendStr"><div id="controlBox"><div id="controlBar"><div id="progBtnBar"><span id="PreLoad"></span><span id="pregTimeBar"></span></div><span id="playBtn" class="icon-ion-ios-play Btn"></span><span id="showTime"><b id="currTime">00:00:00</b> / <b id="totalTime">00:00:00</b></span><span id="FullScreen" class="icon-ion-arrow-expand Btn"></span><div id="volumeBox"><div id="volumeBar"><div id="volumeMask"><span id="volume"><span id="volume2"></span></span></div></div><span id="OpenVolBtn" class="icon-ion-android-volume-up Btn"></span></div></div></div><span id="addBtn"></span><div id="mask"></div><div id="eJectBox"><div class="eJectCloseBox"><span class="eJectClose">close</span></div><img class="eJectImg" src="/static/images/bg_img.png" /><div class="eJectRight"><div class="type3"><span class="eJectTitle" style="text-align: center"></span><a class="btn preQues" style="float: left">&lt;</a><a class="btn nextQues" style="float: right">&gt;</a><p class="eJectContent ContentQ"><p class="question"></p><ul><li><a class="btn submitAns" style="display: none;">submit</a><div><textarea style="width: 95%;height: 60px;" placeholder="input or slide the slider bar" class="answerText"></textarea></div><div class="rangeBox"><span style="color:white;margin-bottom: 10px;" class="rangeText"></span><input type="range" class="rangeQ" min="0" max="10" step="1" value="5"></div></li></ul></p><a href="" class="eJectJump" target="_blank">more</a></div> <div class="typecommon"><span class="eJectTitle"></span><p class="eJectContent Content"></p><a href="" class="eJectJump" target="_blank">more</a></div></div> <div id="panelBox"><span class="close">close</span></div></div>';
         $('#faceBoxs').append(_html);
 
     };
@@ -1744,21 +1754,18 @@ var plugin = function () {
 }();
 function showAnswerByType(type){
     //根据问题类型显示回答方式 1:评分，2：文字，3：全部
-    $(".answerText").hide();
-    $(".rangeText").hide();
-    $(".rangeslider").hide();
+    $(".answerText").css({ display:"none" });
+    $(".rangeBox").css({display:"none"});
     if(!type) return;
     if(type==1){
-        $(".rangeText").show();
-        $(".rangeslider").show();
+        $(".rangeBox").css({display:"block"});
     }
     else if(type==2){
-        $(".answerText").show();
+        $(".answerText").css({ display:"block"});
     }
     else{
-        $(".rangeText").show();
-        $(".answerText").show();
-        $(".rangeslider").show();
+        $(".rangeBox").css({display:"block"});
+        $(".answerText").css({ display:"block" });
     }
 }
 function setRateBarValue(value){
