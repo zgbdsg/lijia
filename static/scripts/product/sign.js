@@ -1093,7 +1093,13 @@
 
                         $('.eJectImg').attr('src', _img);
 
-                        $('.eJectJump').attr('href', data['url'])
+                        if (!!data['url']&&data['url']!="http://") {
+                            $('.eJectJump').attr('href', data['url'])
+                        }
+                        else {
+                            $(".eJectJump").css({ display: "none" });
+                        }
+                        
 
                         $('#mask').fadeIn(200);
 
