@@ -154,8 +154,9 @@ class Main:
 
     def GET(self):
         if session.get('logged_in', False):
-            videos = db.select(video, where='isExp=1', order='ind asc')
-            print(len(videos))
+            videos = db.select(video, where='isExp=1', order='ind')
+            for v in videos:
+                print(v)
             return render.main(videos)
         else:
             raise web.seeother('/login')
