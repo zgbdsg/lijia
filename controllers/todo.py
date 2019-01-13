@@ -154,7 +154,8 @@ class Main:
 
     def GET(self):
         if session.get('logged_in', False):
-            videos = db.select(video, where='isExp=1', order='ind')
+            videos = db.select(video, where='isExp=1', order='ind asc')
+            videos = list(videos)
             for v in videos:
                 print(v)
             return render.main(videos)
