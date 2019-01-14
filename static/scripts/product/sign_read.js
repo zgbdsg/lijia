@@ -574,7 +574,7 @@
 
 			if( !navigator.cookieEnabled ){
 
-				alert('您的浏览器未开启cookie，无法进行标点！');
+				alert('Please open cookie function in your web browser !');
 
 			} else {
 
@@ -600,7 +600,7 @@
 
 					if( !data ){
 
-						var _div = "<div class='person'>还没有数据哦！快去添加吧！</div>";
+						var _div = "<div class='person'>No data, add it!</div>";
 						
 						$('#showBox').append(_div);
 
@@ -639,7 +639,7 @@
 								_div += "<img class='okIcon' src='/static/images/bjsj_c.png'></div>";
 						});
 
-						_div += "</div><button id='cancel'>取消</button>";
+						_div += "</div><button id='cancel'>cancel</button>";
 
 						$('#showBox').append(_div);
 					}
@@ -821,14 +821,14 @@
 				};
 
 				if(len > 500){
-					alert('抱歉，描述信息不能超过500字！');
+					alert("Sorry, the description  can't exceed 500 words!");
 					$('.desc').val(data.desc.substr(0,500));
 					return false;
 				}
 
 				if ( !play.isUrl(data.url) ) {
 
-					alert('link地址填写有误，请填写有效地址！');
+					alert('link adderss error!');
 					$('.url').val('').focus();
 					return false;
 
@@ -868,13 +868,13 @@
 
 				if( file.size > 2*1024*1024 ){
 
-					alert( "请上传小于2M的图片文件！" );
+					alert( "Please upload a picture file less than 2M!" );
 
 					return false;
 
 				}else if( !/image\/\w+/.test(file.type) ){
 
-					alert("请上传jpg类型的文件！");
+					alert("Please upload jpg type files!");
 
 					return false;
 
@@ -981,7 +981,7 @@
 
 						$('.eJectTitle').empty().append(data['title']);
 
-						var _desc = data['desc'] == "" ? '您没有填写详情介绍!' : data['desc'];
+						var _desc = data['desc'] == "" ? 'You did not fill in the details!' : data['desc'];
 
 						// $('.eJectContent').empty().append(_desc);
 

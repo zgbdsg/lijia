@@ -19,14 +19,14 @@ var submitIsExp = function () {
     } else {
         $.post('/manage/update-video-data',{videoList:JSON.stringify(videoList)}, function (resp) {
             console.log(resp);
-            if (resp) {
-                alert("更新成功");
+            if (resp=="True") {
+                alert("Update Success");
                 changeIsExp = {}
                 location.reload();
             }else{
-                alert("更新失败")
+                alert("Update Fail")
             }
-        }, "json");
+        });
     }
 }
 
@@ -41,7 +41,7 @@ var fixHelper = function (e, ui) {
 $(function () {
     var initList = $(".item");
     $.each(initList, function (i, value) {
-        videoList.push({ id: $(value).attr("data-id"), index: i, isExp: $(value).attr("data-isexp") });
+        videoList.push({ id: $(value).attr("data-id"), index:parseInt($(value).attr("data-ind")), isExp: $(value).attr("data-isexp") });
     })
     console.log("initList",videoList);
     $(".videolist tbody").sortable({

@@ -67,7 +67,7 @@ $:render.header()
             <tr>
                 <td>$u.name</td>
                 <td>$u.pwd</td>
-                <td><a href="/user/$u.id/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a></td>
+                <td><a href="/user/$u.id/delete" onclick="return confirm('This is an irreversible process, sure?')">Delete</a></td>
             </tr>
         </table>
     </div>
@@ -84,7 +84,7 @@ $:render.header()
                 </tr>
             </thead>
             $for v in videos:
-            <tr class="item" data-id="$v.id" data-isexp="$v.isExp">
+            <tr class="item" data-id="$v.id" data-isexp="$v.isExp" data-ind="$v.ind">
                 <td>$v.name</td>
                 <td>$v.type</td>
                 <td>
