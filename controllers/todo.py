@@ -205,9 +205,9 @@ class Insert_play_data:
                            time=time, title=title, url=url, des=desc,
                            topY=topY, leftX=leftX)
         if result:
-            return 'true'
+            return True
         else:
-            return 'false'
+            return False
 
 
 class Insert_question_data:
@@ -245,9 +245,9 @@ class Insert_question_data:
                             Q8=question["8"], Q9=question["9"], Q10=question["10"])
         print(result1)
         if result1:
-            return 'true'
+            return True
         else:
-            return 'false'
+            return False
 
 
 class Select_play_data:
@@ -346,9 +346,9 @@ class Insert_answer_data:
                    a2Q5=json.dumps(ans["Q5"]), a2Q6=json.dumps(ans["Q6"]), a2Q7=json.dumps(ans["Q7"]),
                    a2Q8=json.dumps(ans["Q8"]), a2Q9=json.dumps(ans["Q9"]), a2Q10=json.dumps(ans["Q10"]))
         if result:
-            return 'true'
+            return True
         else:
-            return 'false'
+            return False
 
 class Clear:
     def POST(self, id):
@@ -478,9 +478,9 @@ class Score:
         result = db.insert(score, vid=vid, uid=uid, timestamp=timestamp,
                            value=value)
         if result:
-            return 'true'
+            return True
         else:
-            return 'false'
+            return False
 
         pass
 
@@ -507,9 +507,9 @@ class Action:
         result = db.insert(action, vid=vid, uid=uid, bid=bid, timestamp=timestamp,
                            action=value)
         if result:
-            return 'true'
+            return True
         else:
-            return 'false'
+            return False
 
         pass
 
@@ -564,8 +564,5 @@ class Update_video_data:
             print(item)
             vid = int(item['id'])
             result = db.update(video, ind=int(item['index']), isExp=int(item['isExp']), where='id=$vid', vars=locals())
-        if result:
-            return 'true'
-        else:
-            return 'false'
-        pass
+
+        return True
