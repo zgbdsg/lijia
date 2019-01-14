@@ -20,8 +20,11 @@ var submitIsExp = function () {
         $.post('/manage/update-video-data',{videoList:JSON.stringify(videoList)}, function (resp) {
             console.log(resp);
             if (resp) {
+                alert("更新成功");
                 changeIsExp = {}
                 location.reload();
+            }else{
+                alert("更新失败")
             }
         }, "json");
     }
