@@ -545,7 +545,7 @@ class Manage:
             raise web.seeother('/')
 
         users = db.select(user, order='id asc')
-        allvideos = db.select(video, order='type desc')
+        allvideos = db.select(video, order='ind asc')
         return render.manage(users, allvideos)
         pass
 
