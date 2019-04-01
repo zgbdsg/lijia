@@ -29,9 +29,10 @@ $:render.header()
     <span id="playImgBtn" style="display: block; left: 45%; top: 32.6599%"></span>
     <div id="mask" style="display: none;"></div>
     <div id="eJectBox" style="">
-        <div class="eJectCloseBox"><span class="eJectClose">close</span></div>
+        <div class="eJectCloseBox dialog-move"><span class="eJectClose">close</span></div>
         <!-- <img class="eJectImg" src="/static/images/bg_img.png"> -->
-        <div class="eJectCenter"><span class="eJectTitle"></span>
+        <div class="eJectCenter">
+            <span class="eJectTitle"></span>
             <p class="eJectContent ps-container">
             <div class="ps-scrollbar-x-rail" style="width: 0px; display: none; left: 0px;">
                 <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
@@ -43,7 +44,7 @@ $:render.header()
     </div>
     $if video.type==3:
         <div id="questionBox" style="display: none;"><span class="close">close</span><span class="existing">source</span><span
-                class="handadd selected">add</span>
+                class="handadd selected dialog-move">add</span>
             <div id="questionshowBox">
                 <table class="playTable" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
@@ -125,7 +126,7 @@ $:render.header()
         </div>
     $else:
         <div id="panelBox" style="display: none;"><span class="close">close</span><span class="existing">source</span><span
-                class="handadd selected">add</span>
+                class="handadd selected dialog-move">add</span>
             <div id="showBox">
                 <table class="playTable" cellspacing="0" cellpadding="0" border="0">
                     <tbody>

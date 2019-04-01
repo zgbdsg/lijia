@@ -1716,7 +1716,7 @@ var plugin = function () {
 
             i = parseInt(s / 60);
 
-            s = parseInt(i % 60);
+            s = parseInt(s % 60);
 
             if (i > 60) {
 
