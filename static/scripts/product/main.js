@@ -1,7 +1,7 @@
 var plugin = function () {
 
     var play = new Object();
-    var videoCount = 0;
+    var videoCount = 0; 
 
     //兼容主流浏览器的requestNextAnimationFrame 和 cancelNextRequestAnimationFrame方法
     window.requestNextAnimationFrame = (function () {
