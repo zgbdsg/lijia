@@ -23,24 +23,5 @@ window.onload = function () {
                 ;
             };
         })
-       
-        // var item = container[0].parentNode;
-        // item.onmousedown = function (ev) {
-        //     var oevent = ev || event;
-
-        //     var distanceX = oevent.clientX - item.offsetLeft;
-        //     var distanceY = oevent.clientY - item.offsetTop;
-
-        //     document.onmousemove = function (ev) {
-        //         var oevent = ev || event;
-        //         item.style.left = oevent.clientX - distanceX + 'px';
-        //         item.style.top = oevent.clientY - distanceY + 'px';
-        //     };
-        //     document.onmouseup = function () {
-        //         document.onmousemove = null;
-        //         document.onmouseup = null;
-        //     };
-        //     ;
-        // };
     }
 }
