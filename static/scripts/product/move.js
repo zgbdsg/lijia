@@ -5,7 +5,7 @@ window.onload = function () {
         $(container).each(function (item) {
             this.style.cursor="move";
             var item = this.parentNode;
-            item.onmousedown = function (ev) {
+            this.onmousedown = function (ev) {
                 var oevent = ev || event;
 
                 var distanceX = oevent.clientX - item.offsetLeft;
