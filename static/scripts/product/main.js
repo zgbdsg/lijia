@@ -1804,7 +1804,9 @@ $(function () {
             console.log('position: ' + position, 'value: ' + value);
             var id = $("input.videoId").val();
             setRateBarValue(value);
-            $.post('/sign/' + id + '/score', { score: value }, function (data) {
+
+            var videoTime = $("#currTime").text()
+            $.post('/sign/' + id + '/score', { score: value, videoTime: videoTime}, function (data) {
             }, "json");
         }
     });

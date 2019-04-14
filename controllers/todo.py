@@ -473,9 +473,10 @@ class Score:
 
         vid = int(id)
         uid = session.get('uid', 0)
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        #timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         value = float(data['score'])
-        result = db.insert(score, vid=vid, uid=uid, timestamp=timestamp,
+        videoTime = data['videoTime']
+        result = db.insert(score, vid=vid, uid=uid, timestamp=videoTime,
                            value=value)
         if result:
             return json.dumps(True)
