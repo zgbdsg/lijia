@@ -127,13 +127,17 @@ class Delete:
     def GET(self, id):
         v = get_by_id(id)
         if not v:
-            return render.error('没找到这条记录', None)
+            return render.error('cannot find this record', None)
 
         print v['path']
-        os.remove('./%s' % v['path'])
+        try:
+            os.remove('./%s' % v['path'])
+        except:
+            print "remove error"
+            
         db.delete(video, where='id=$id', vars=locals())
         db.delete(playdb, where='vid=$id', vars=locals())
-        return render.error('删除成功！', '/admin')
+        return render.error('remove successfully', '/admin')
 
 
 class Index:
