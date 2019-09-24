@@ -431,6 +431,9 @@ var plugin = function () {
         //进度条被按下
         play.progBtnBar.addEventListener("mouseup", function (e) {
 
+            //普通用户禁止后退
+            return false;
+
             play.timeDrag = true;
             //快进则返回
             var _docu = $(play.progBtnBar),

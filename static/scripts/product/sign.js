@@ -359,7 +359,7 @@
 
             console.log('down:x:' + e.pageX);
 
-            play.media.play();
+            //play.media.play();
 
             e.stopPropagation();
 
