@@ -652,9 +652,10 @@ var plugin = function () {
                 play.controlIsShow = true;
 
                 var vtype = videoT[videoCount].type;
-                if (vtype != "2") {
-                    $(play.controlBox).slideDown(600);
-                }
+                // if (vtype != "2") {
+                //     $(play.controlBox).slideDown(600);
+                // }
+                $(play.controlBox).slideUp(600);
 
             }
             ;
@@ -1041,7 +1042,7 @@ var plugin = function () {
 
             mouseleave: function (event) {
 
-                $(this).find('.adsTitle').fadeOut(300);
+                //$(this).find('.adsTitle').fadeOut(300);
 
                 var id = videoT[videoCount].id;
                 var action = "mouse leave title";
@@ -1063,7 +1064,7 @@ var plugin = function () {
                 $.post('/sign/' + id + '/action', { action: action, bid: bid }, function (data) {
                 }, "json");
 
-                $(this).siblings('.adsTitle').fadeIn(300);
+                //$(this).siblings('.adsTitle').fadeIn(300);
 
             },
             click: function () {
@@ -1347,9 +1348,10 @@ var plugin = function () {
                     play.controlIsShow = true;
                     var vtype = videoT[videoCount].type;
 
-                    if (vtype != "2") {
-                        $(play.controlBox).slideDown(600);
-                    }
+                    // if (vtype != "2") {
+                    //     $(play.controlBox).slideDown(600);
+                    // }
+                    $(play.controlBox).slideUp(600);
                 }
                 ;
 

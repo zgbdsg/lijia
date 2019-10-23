@@ -1050,7 +1050,7 @@
 
             mouseleave: function () {
 
-                $(this).find('.adsTitle').fadeOut(300);
+                //$(this).find('.adsTitle').fadeOut(300);
 
             }
 
@@ -1060,7 +1060,7 @@
 
             mouseover: function () {
 
-                $(this).siblings('.adsTitle').fadeIn(300);
+                //$(this).siblings('.adsTitle').fadeIn(300);
 
             },
             click:function(){
