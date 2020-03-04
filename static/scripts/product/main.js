@@ -1,7 +1,7 @@
 var plugin = function () {
 
     var play = new Object();
-    var videoCount = 0; 
+    var videoCount = 0;
 
     //兼容主流浏览器的requestNextAnimationFrame 和 cancelNextRequestAnimationFrame方法
     window.requestNextAnimationFrame = (function () {
@@ -172,7 +172,7 @@ var plugin = function () {
         $(".videoId").val(id);
         $(".videoType").val(type);
 
-        if (type == "2"||type=="4") {
+        if (type == "2" || type == "4") {
             console.log("rate-bar block");
             $('#rate-bar').css("display", "block")
         }
@@ -389,7 +389,7 @@ var plugin = function () {
                 play.getVideo();
             }
             vtype = videoT[videoCount].type;
-            if (vtype == "2"||vtype=="4") {
+            if (vtype == "2" || vtype == "4") {
                 $('#rate-bar').css("display", "block");
                 $('#rate-bar .rangeslider').css("display", "block");
                 setRateBarValue(50);
@@ -437,7 +437,7 @@ var plugin = function () {
             play.timeDrag = true;
             //快进则返回
             var _docu = $(play.progBtnBar),
-            position = e.pageX - _docu.offset().left;
+                position = e.pageX - _docu.offset().left;
             var _playTime = $(_docu).find("#pregTimeBar").width();
             if (position > _playTime) {
                 return false;
@@ -1097,7 +1097,7 @@ var plugin = function () {
                     $(".eJectRight>.typecommon").css({ display: "none" });
                     $(".eJectCloseBox").css({ display: "none" });
                 }
-                else{
+                else {
                     $(".eJectCloseBox").css({ display: "block" });
                 }
 
@@ -1115,16 +1115,16 @@ var plugin = function () {
 
                         play.answers.splice(0, 10);
 
-                        var ques=JSON.parse(play.question.Q1||"{}");
+                        var ques = JSON.parse(play.question.Q1 || "{}");
                         $('.question').text("").text(ques.text || "no question");
 
                         $('.question').attr({ "data-index": 1 });
-                        
+
                         // if(ques.type&&ques.type!="2"){
                         //     $('.rangeQ').val(5).change();
                         // }
                         $('.rangeQ').val(5).change();
-                            
+
 
                         var _desc = data['desc'] == "" ? 'You did not fill in the details!' : data['desc'];
 
@@ -1134,7 +1134,7 @@ var plugin = function () {
 
                         //$('.eJectImg').attr('src', _img);
 
-                        if (!!data['url']&&data['url']!="http://") {
+                        if (!!data['url'] && data['url'] != "http://") {
                             $('.eJectJump').attr('href', data['url'])
                         }
                         else {
@@ -1153,9 +1153,9 @@ var plugin = function () {
                         $('.rangeslider').css({ display: "block" });
                         $(".rangeText").css({ display: "block" });
                         $(".submitAns").css({ display: "none" });
-                        
+
                         //根据问题类型显示回答方式 1:评分，2：文字，3：全部,不判断类型会影响2和4的打分条
-                        if(vtype=="3"){
+                        if (vtype == "3") {
                             showAnswerByType(ques.type);
                         }
                     } else {
@@ -1176,7 +1176,7 @@ var plugin = function () {
             $(".rangeText").css({ display: "block" });
             $(".submitAns").css({ display: "none" });
             var index = parseInt($('.question').attr('data-index'));
-            var ques=JSON.parse(play.question["Q" + (index>=1?index-1:index)]||"{}");
+            var ques = JSON.parse(play.question["Q" + (index >= 1 ? index - 1 : index)] || "{}");
             if (index > 1) {
                 index--;
                 $('.question').text("").text(ques.text || "no question");
@@ -1194,10 +1194,10 @@ var plugin = function () {
             }
             if (play.answers[index]) {
                 $(".answerText").val(play.answers[index].ans);
-                if(ques.type&&ques.type!="2")
+                if (ques.type && ques.type != "2")
                     $('.rangeQ').val(play.answers[index].score).change();
             } else {
-                if(ques.type&&ques.type!="2")
+                if (ques.type && ques.type != "2")
                     $('.rangeQ').val(5).change();
                 $(".answerText").val("");
             }
@@ -1209,7 +1209,7 @@ var plugin = function () {
             $('.rangeslider').css({ display: "block" });
             $(".rangeText").css({ display: "block" });
             var index = parseInt($('.question').attr('data-index'));
-            var ques=JSON.parse(play.question["Q" + (index<=play.question['size']?index+1:index)]||"{}");
+            var ques = JSON.parse(play.question["Q" + (index <= play.question['size'] ? index + 1 : index)] || "{}");
             if (index < play.question['size']) {
                 index++;
                 $('.question').text("").text(ques.text || "no question");
@@ -1217,7 +1217,7 @@ var plugin = function () {
                 $(".submitAns").css({ display: "none" });
                 //根据问题类型显示回答方式 1:评分，2：文字，3：全部
                 showAnswerByType(ques.type);
-            } else if (index = play.question['size']||play.question['size']==0) {
+            } else if (index = play.question['size'] || play.question['size'] == 0) {
                 index++;
                 $('.question').attr({ "data-index": index });
                 $('.question').text("end");
@@ -1228,11 +1228,11 @@ var plugin = function () {
             }
             if (play.answers[index]) {
                 $(".answerText").val(play.answers[index].ans);
-                if(ques.type&&ques.type!="2")
+                if (ques.type && ques.type != "2")
                     $('.rangeQ').val(play.answers[index].score).change();
             } else {
                 $(".answerText").val("");
-                if(ques.type&&ques.type!="2")
+                if (ques.type && ques.type != "2")
                     $('.rangeQ').val(5).change();
             }
         });
@@ -1268,7 +1268,7 @@ var plugin = function () {
                 console.log('onSlide');
                 console.log('position: ' + position, 'value: ' + value);
                 $(".rangeText").text(value);
-                
+
             },
             onSlideEnd: function (position, value) {
                 var index = parseInt($('.question').attr('data-index'));
@@ -1436,7 +1436,7 @@ var plugin = function () {
             position = x - _docu.offset().left,
 
             _res = 100 * position / _docu.width();
-       
+
 
         if (_res > 100) {
 
@@ -1757,34 +1757,48 @@ var plugin = function () {
     window.addEventListener("load", play.init);
     return { videoCount: videoCount };
 }();
-function showAnswerByType(type){
+function showAnswerByType(type) {
     //根据问题类型显示回答方式 1:评分，2：文字，3：全部
-    $(".answerText").css({ display:"none" });
-    $(".rangeBox").css({display:"none"});
-    if(!type) return;
-    if(type==1){
-        $(".rangeBox").css({display:"block"});
+    $(".answerText").css({ display: "none" });
+    $(".rangeBox").css({ display: "none" });
+    if (!type) return;
+    if (type == 1) {
+        $(".rangeBox").css({ display: "block" });
     }
-    else if(type==2){
-        $(".answerText").css({ display:"block"});
+    else if (type == 2) {
+        $(".answerText").css({ display: "block" });
     }
-    else{
-        $(".rangeBox").css({display:"block"});
-        $(".answerText").css({ display:"block" });
+    else {
+        $(".rangeBox").css({ display: "block" });
+        $(".answerText").css({ display: "block" });
     }
 }
-function setRateBarValue(value){
-    var _h='<span style="display: block;line-height: 42px;text-align: center;">'+value+'</span>';
+function setRateBarValue(value) {
+    var _h = '<span style="display: block;line-height: 42px;text-align: center;">' + value + '</span>';
     $("#rate-bar .rangeslider__handle").html(_h);
 }
 $(function () {
     // $("#mask").fadeIn(200);
-    $(".rightConfirm").on("click", function () {
-        $(".rights").slideUp(200);
-        var id = $("input.videoId").val();
-        var action = "Confirm"
-        $.post('/sign/' + id + '/action', { action: action }, function (data) { }, "json");
-    });
+    //按钮倒计时
+    var _time = 10;
+    $(".rightConfirm").text("confirm(10s)")
+    this.confirmHandl = setInterval(function () {
+        if (_time <= 1) {
+            window.clearInterval(this.confirmHandl);
+            $(".rightConfirm").text("confirm")
+            $(".rightConfirm").removeClass("disabled");
+            $(".rightConfirm").on("click", function () {
+                $(".rights").slideUp(200);
+                var id = $("input.videoId").val();
+                var action = "Confirm"
+                $.post('/sign/' + id + '/action', { action: action }, function (data) { }, "json");
+            });
+        } else {
+            _time -= 1;
+            $(".rightConfirm").text("confirm(" + _time + "s)")
+        }
+    }, 1000)
+
     $("#faceMedia").attr({ "src": videoT[0].path });
 
     $('input[type="range"]').rangeslider({
@@ -1811,7 +1825,7 @@ $(function () {
             setRateBarValue(value);
 
             var videoTime = $("#currTime").text()
-            $.post('/sign/' + id + '/score', { score: value, videoTime: videoTime}, function (data) {
+            $.post('/sign/' + id + '/score', { score: value, videoTime: videoTime }, function (data) {
             }, "json");
         }
     });
@@ -1823,6 +1837,7 @@ $(function () {
     //     console.log("rate-bar block");
     //     $('#rate-bar').css("display", "block")
     // }
+
 
 });
 
