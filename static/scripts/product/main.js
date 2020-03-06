@@ -1781,11 +1781,11 @@ $(function () {
     // $("#mask").fadeIn(200);
     //按钮倒计时
     var _time = 10;
-    $(".rightConfirm").text("confirm(10s)")
+    $(".rightConfirm").text("start(10s)")
     this.confirmHandl = setInterval(function () {
         if (_time <= 1) {
             window.clearInterval(this.confirmHandl);
-            $(".rightConfirm").text("confirm")
+            $(".rightConfirm").text("start")
             $(".rightConfirm").removeClass("disabled");
             $(".rightConfirm").on("click", function () {
                 $(".rights").slideUp(200);
@@ -1795,7 +1795,7 @@ $(function () {
             });
         } else {
             _time -= 1;
-            $(".rightConfirm").text("confirm(" + _time + "s)")
+            $(".rightConfirm").text("start(" + _time + "s)")
         }
     }, 1000)
 
